@@ -12,6 +12,7 @@ exports.createUserAccount = functions.auth.user().onCreate((event) => {
     newUser.displayName = user.displayName;
     // If user has no dp make a default one from the firebase storage
     newUser.photoURL = user.photoURL || "https://firebasestorage.googleapis.com/v0/b/letschat-bbbfd.appspot.com/o/default-dp.png?alt=media&token=2508f65b-e1ff-4782-a2c3-7d4c9b04e3d9";
+    newUser.status = "Hey I'm in letschat";
 
     return admin.firestore().doc(`/users/${uid}`).set(newUser);
 });
